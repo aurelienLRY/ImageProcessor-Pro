@@ -1,11 +1,12 @@
 name: Déploiement continus client
 
 on:
-  push:
-    branches:
-      - main
+  push:    
     paths:
       - 'client/**'
+    branches:
+      - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
