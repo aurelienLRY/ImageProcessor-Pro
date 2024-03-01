@@ -2,8 +2,6 @@ name: Déploiement continus client
 
 on:
   push:    
-    paths:
-      - 'client/**'
     branches:
       - main
 
