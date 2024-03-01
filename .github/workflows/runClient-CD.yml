@@ -1,9 +1,11 @@
-name: Déploiement continus client
+name: Client - Déploiement continus
 
 on:
   push:    
     branches:
       - main
+    paths:
+      - 'client/**'
 
 jobs:
   test:

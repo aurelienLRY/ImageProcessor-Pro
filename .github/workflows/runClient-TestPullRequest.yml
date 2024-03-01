@@ -1,19 +1,13 @@
-name: Run tests Client
+name: Client- Test with pull request
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'client/**'
   pull_request:
     branches:
       - main
     paths:
-        - 'client/**'
-      
-
-
+      - 'client/**'
+ 
 jobs:
   test:
     runs-on: ubuntu-latest
