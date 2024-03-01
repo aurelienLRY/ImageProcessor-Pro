@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: client/build
+          path: client/dist
 
   deploy:
     needs: test
@@ -48,7 +48,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: client/build
+          path: client/dist
 
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
