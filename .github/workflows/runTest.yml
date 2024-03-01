@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - 1-modifier-le-workflow-afin-de-réaliser-les-tests-client-server
       
   pull_request:
     branches:
@@ -23,7 +24,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          cd client
+          yarn install
 
       - name: Run tests
-        run: yarn test
+        run: |
+          cd client
+          yarn test
