@@ -33,11 +33,23 @@ jobs:
           cd client
           yarn build
 
+      - name: Upload build
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: client/build
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
 
     steps:
+      - name: Download build
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: client/build
+
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
