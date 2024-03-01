@@ -1,4 +1,4 @@
-name: Déploiement continus client
+name: cd
 
 on:
   push:    
