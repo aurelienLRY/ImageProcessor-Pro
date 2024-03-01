@@ -1,13 +1,12 @@
-name: Run tests and deploy
+name: Déploiement continus client
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'client/**'
       
-  pull_request:
-    branches:
-      - main
 
 
 jobs:
