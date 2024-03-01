@@ -6,8 +6,10 @@ import FilesRenamer from "./index";
 
 
 describe("FilesRenamer", () => {
+  global.URL.createObjectURL = vi.fn();
+  
   test("renders FilesRenamer component", () => {
-    const image = [{new File([""], "image1.jpg"), new File([""], "image2.jpg")}];
+    const image = [new File([""], "image1.jpg"), new File([""], "image2.jpg")];
     const mockOnRename = vi.fn();
     render(<FilesRenamer image={image} onRename={mockOnRename} />);
     const filesRenamerElement = screen.getByTestId("files-renamer");
@@ -26,8 +28,10 @@ describe("FilesRenamer", () => {
     const mockOnRename = vi.fn();
     const image = [new File([""], "image1.jpg"), new File([""], "image2.jpg")];
     render(<FilesRenamer image={image} onRename={mockOnRename} />);
-    const input = screen.getByPlaceholderText("Renseigner son nouveau nom");
-    fireEvent.change(input, { target: { value: "new_name" } });
+    const input = screen.getAllByPlaceholderText("Renseigner son nouveau nom");
+    fireEvent.change(input[0], { target: { value: "new_name" } });
+    fireEvent.blur(input[0]); // Ajoutez cette ligne
     expect(mockOnRename).toHaveBeenCalledWith({ 0: "new_name" });
   });
+  
 });

@@ -31,14 +31,14 @@ function FilesRenamer({image , onRename}) {
   }
 
   return (
-    <div className="files-naming">
+    <div className="files-naming" data-testid="files-renamer">
       <div className="files-naming-header">
       <h2> <PenNib/> Naming </h2>
       <p><strong>Renommé vos images.</strong> <br/>Les noms d'origines seront remplacer lors de la génération du fichier </p>
       </div>
       {Array.isArray(myFiles) &&
         myFiles.map((file, index) => (
-          <div key={index} className="files-naming-item">
+          <div key={index} className="files-naming-item" data-testid="file-item">
             <img
               src={URL.createObjectURL(file)}
               alt={`thumbnail ${index}`}
