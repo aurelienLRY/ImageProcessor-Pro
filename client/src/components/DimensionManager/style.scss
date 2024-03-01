@@ -1,0 +1,47 @@
+@use "../../assets/sass/abstracts/variables" as v; // Import SASS variables file
+
+.dimensionManager {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  padding: 1em;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2em;
+    width: 100%;
+  }
+
+  &-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0.5em;
+    gap: 6px;
+    transition: all 0.250s ease-in-out;
+
+    &:hover , &:focus-within {
+      background-color: v.$background-light;
+    }
+
+    input {
+      padding: 5px;
+      border-radius: 5px;
+      border-width: 1px !important;
+    }
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+  }
+}

@@ -1,0 +1,48 @@
+@use 'sass:color';
+// THEME COLORS
+$primary-color:  #2c3e50;
+$primary-color-dark: darken($primary-color, 10%);
+$primary-color-light: lighten($primary-color, 10%);
+$primary-color-shadow: color.scale($primary-color, $alpha: -50%);
+
+$secondary-color: #42b983;
+$secondary-color-dark: darken($secondary-color, 10%);
+$secondary-color-light: lighten($secondary-color, 10%);
+$secondary-color-shadow: color.scale($secondary-color, $alpha: -50%);
+
+$danger-color: #ec3d29;
+$danger-color-dark: darken($danger-color, 10%);
+$danger-color-light: lighten($danger-color, 10%);
+$danger-color-shadow: rgba(236, 61, 41, 0.5);
+
+$primary-color-gradient : linear-gradient(to top, darken($primary-color,50%) 0% , $primary-color 100%);
+$secondary-color-gradient : linear-gradient(to top, darken($secondary-color,50%) 0% , $secondary-color 100%);
+$danger-color-gradient : linear-gradient(to top, darken($danger-color,50%) 0% , $danger-color 100%);
+
+$background-light: #f4f4f4 !default;
+$background-medium: #787676ad;
+$background-dark: #12002b !default;
+
+$text-color: white !default;
+
+$success-color : rgb(58, 121, 58);
+$warning-color : rgb(255, 193, 7);
+$danger-color : rgb(220, 53, 69);
+$info-color : rgb(23, 162, 184);
+
+
+
+// TYPOGRAPHY
+$fontSize: 16px !default;
+
+// BREAKPOINTS
+// !! Attention modifier uniquement les valeurs !!
+// La mixin "media(nom du breakpoint)" permet d'inclure 
+// @media (min-width:$valeur) {}
+$breakpoints: (
+  sm-mobile: 374px,
+  md-mobile: 720px,
+  tablet: 920px,
+  desktop: 1200px,
+  large-desktop: 1400px,
+);

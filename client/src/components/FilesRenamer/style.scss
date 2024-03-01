@@ -1,0 +1,62 @@
+@use "../../assets/sass/abstracts/variables" as *;
+
+.files-naming {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  background-color: $background-light;
+  border-radius: 5px;
+  padding: 1em;
+
+  &-header{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 100%;
+ 
+    .penNib{
+      fill: currentColor;
+      width: 0.8em;
+      height: 0.8em;
+    }
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.1s ease-in-out;
+    padding: 0.5em;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $background-medium;
+    }
+    &:focus-within {
+      background-color: $background-medium;
+    }
+
+    p {
+      font-size: small;
+    }
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+  }
+  input {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 5px;
+    border-width: 1px;
+    padding: 0.5em;
+    transition: all 0.2s ease-in-out;
+    &:focus-visible {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0.1em 0.15em 0.2em 0.1rem $primary-color-shadow;
+    }
+  }
+}

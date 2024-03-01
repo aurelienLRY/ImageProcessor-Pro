@@ -1,0 +1,55 @@
+@use "../../assets/sass/abstracts/variables" as v;
+.files_manager {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1em;
+
+  &-input {
+    input{
+      display: none;
+    }
+  }
+
+  .imgViewer {
+    width: 100%;
+    max-width: max-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    background-color: v.$background-light;
+    border-radius: 5px;
+    padding: 0.5em;
+    justify-items: center;
+    align-items: center;
+
+    &.none {
+      display: none;
+    }
+
+    &-item {
+      position: relative;
+
+      .thumbnail {
+        min-width: 150px;
+        width: 100%;
+        max-width: 15vw;
+        object-fit: cover;
+      }
+    }
+    .trashCan {
+      position: absolute;
+      right: 3px;
+      top: 3px;
+      fill: v.$danger-color;
+      width:1.2em;
+      height: 1.2em;
+      transition: all 0.250s ease-in-out;
+      &:hover {
+        fill: v.$danger-color-dark;
+        transform: scale(1.2);
+      }
+    }
+  }
+
+}
