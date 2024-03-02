@@ -5,3 +5,10 @@ form {
     gap: 1em;
     justify-content: center;
 }
+.submit-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    width: 100%;
+}

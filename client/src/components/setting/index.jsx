@@ -29,7 +29,7 @@ function Setting({ onSetting }) {
   }, [compression]);
 
   return (
-    <div className="setting">
+    <div className="setting" data-testid="setting">
       <div className="setting-header">
         <h2><Gears/> Setting</h2>
         <p>Customize your experience</p>

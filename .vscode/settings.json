@@ -1,3 +1,7 @@
 {
-    "cSpell.language": "en,fr,fr-FR,lorem"
+    "cSpell.language": "en,fr,fr-FR,lorem",
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/runClient-CD.yml",
+        ".github/workflows/runClient-TestPullRequest.yml"
+    ]
 }

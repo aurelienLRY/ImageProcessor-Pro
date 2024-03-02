@@ -53,12 +53,14 @@ function MyForm() {
           <DestinationManager onDestination={handleDestination} />
         </>
       )}
-      <button
-        type="submit"
-        className={image && image.length > 0 ? "btn" : "btn hidden"}
-      >
-        Envoyer
-      </button>
+      <div className="submit-content">
+        <button
+          type="submit"
+          className={image && image.length > 0 ? "btn" : "btn hidden"}
+        >
+          Envoyer
+        </button>
+      </div>
     </form>
   );
 }
