@@ -22,7 +22,7 @@ function DestinationManager({ onDestination }) {
     return (
         <div className="destinationManager" data-testid="destination-manager">
             <div className="destinationManager-header">
-                <h2>Destination</h2>
+                <h2><FolderOpen/>  Destination</h2>
                 <p>Renseigné le dossier de destination</p>
             </div>
             <div className="destinationManager-body">

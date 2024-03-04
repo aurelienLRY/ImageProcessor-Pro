@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './style.scss'
 import PropTypes from 'prop-types'
+import SvgReact from './svg_react'
 
 function TechnologyManager( {onTechnologyChange}) {
   const [technologies, setTechnologies] = useState()
@@ -19,10 +20,10 @@ const handleTechnologyChange = (e) => {
   return (
 <div className="technology-manager" data-testid="technology-manager">
   <div className="technology-manager-header">
-        <h2>Technology Manager</h2>
+        <h2><SvgReact/> Technology Manager</h2>
         <p> Choisissez la technologie que vous utilisez </p>
   </div> 
-  <div className="technology-manger-content">
+  <div className="technology-manager-content">
     <div className="item_group">
           <input
             type="checkbox"
