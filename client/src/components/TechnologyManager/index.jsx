@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './style.scss'
 import PropTypes from 'prop-types'
 import SvgReact from './svg_react'
+import { Tooltip } from 'antd'
 
 function TechnologyManager( {onTechnologyChange}) {
-  const [technologies, setTechnologies] = useState()
+  const [technologies, setTechnologies] = useState({html : false, react : false})
 
 const handleTechnologyChange = (e) => {
     setTechnologies({
@@ -21,7 +22,9 @@ const handleTechnologyChange = (e) => {
 <div className="technology-manager" data-testid="technology-manager">
   <div className="technology-manager-header">
         <h2><SvgReact/> Technology Manager</h2>
-        <p> Choisissez la technologie que vous utilisez </p>
+        <Tooltip title="image processor génère le code d'intégration">
+        <strong>Sélectionnez la technologie utilisé </strong> 
+        </Tooltip> 
   </div> 
   <div className="technology-manager-content">
     <div className="item_group">

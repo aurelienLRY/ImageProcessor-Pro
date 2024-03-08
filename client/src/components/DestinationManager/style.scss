@@ -1,19 +1,22 @@
 @use "../../assets/sass/abstracts/variables" as v; // Import SASS variables file
 
 .destinationManager {
+  min-width: 450px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   border-radius: 5px;
   padding: 1em;
   gap: 1em;
+  background-color: v.$background-light;
 
   &-header {
     display: flex;
     flex-direction: column;
     gap: 3px;
     max-width: 100%;
-    .folderOpen{
+    .folderOpen {
       width: 1em;
       height: 1em;
       fill: currentColor;
@@ -23,13 +26,21 @@
   &-body {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1em;
     width: 100%;
+    padding: 1em;
+    border-radius: 5px;
+    transition: all 0.200s ease-in-out;
 
     input {
       padding: 5px;
       border-radius: 5px;
       border-width: 1px !important;
+    }
+    &:hover,
+    &:focus-within {
+      background-color: v.$background-medium;
     }
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { test, expect, describe, vi } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import DimensionManager from "./index";

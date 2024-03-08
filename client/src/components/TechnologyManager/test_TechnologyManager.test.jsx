@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor} from '@testing-library/react';
 import TechnologyManager from './index';
 import {vi, describe , it ,expect} from 'vitest'
 
@@ -17,12 +17,14 @@ describe('TechnologyManager Component', () => {
     expect(headerElement).toBeInTheDocument();
   });
 
-  it('should call onTechnologyChange when checkbox is checked', () => {
+  it('should call onTechnologyChange when checkbox is checked', async () => {
     const mockOnTechnologyChange = vi.fn();
     render(<TechnologyManager onTechnologyChange={mockOnTechnologyChange} />);
     const htmlCheckbox = screen.getByLabelText('HTML');
     fireEvent.click(htmlCheckbox);
-    expect(mockOnTechnologyChange).toHaveBeenCalledWith({ html: true });
+    await waitFor(() => {
+    expect(mockOnTechnologyChange).toHaveBeenCalledWith({ html: true , react: false});
+    });
   });
 
   it('should call onTechnologyChange when checkbox is unchecked', () => {
@@ -30,8 +32,8 @@ describe('TechnologyManager Component', () => {
     render(<TechnologyManager onTechnologyChange={mockOnTechnologyChange} />);
     const reactCheckbox = screen.getByLabelText('React');
     fireEvent.click(reactCheckbox);
-    expect(mockOnTechnologyChange).toHaveBeenCalledWith({ react: true });
+    expect(mockOnTechnologyChange).toHaveBeenCalledWith({ html: false , react: true});
     fireEvent.click(reactCheckbox);
-    expect(mockOnTechnologyChange).toHaveBeenCalledWith({ react: false });
+    expect(mockOnTechnologyChange).toHaveBeenCalledWith({ html: false , react: false});
   });
 });

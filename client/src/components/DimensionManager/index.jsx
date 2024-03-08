@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
+import {Tooltip} from "antd";
 import PropTypes from "prop-types";
 import "./style.scss";
 
@@ -21,12 +22,14 @@ function Dimension({ id, onDimensionChange, onSuffixChange, onRemove }) {
         className="dimensionInput"
         onBlur={(e) => onDimensionChange(id, e)}
         placeholder="Largeur en pixel"
+        required
       />
       <input
         type="text"
         className="suffixInput"
         onBlur={(e) => onSuffixChange(id, e)}
         placeholder="Entrer un suffixe"
+        required
       />
       {onRemove && (
         <button
@@ -44,7 +47,7 @@ function Dimension({ id, onDimensionChange, onSuffixChange, onRemove }) {
 // Le gestionnaire principal des dimensions
 function DimensionManager({ onDimensionManager }) {
   const [dimensions, setDimensions] = useState([
-    { id: Date.now(), dimension: "", dimensionSuffix: "" },
+    { id: Date.now(), dimension:"", dimensionSuffix: "" },
   ]);
 
   const [dimensionError, setDimensionError] = useState(false);
@@ -123,8 +126,9 @@ function DimensionManager({ onDimensionManager }) {
   return (
     <div className="dimensionManager" data-testid="dimension-manager">
       <div className="dimension-manger-header">
-        <h3>Personnalisez les dimensions</h3>
-        <p>Adapter vos images aux breackpoints de votre site </p>
+        <Tooltip title="Personnalisez les dimensions de vos images aux breakpoints de votre site">
+        <h3>Option de dimensions</h3>
+        </Tooltip>
       </div>
       {dimensionError || suffixError ? (
         <div className="message error">

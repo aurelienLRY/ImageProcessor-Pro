@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import {Tooltip} from "antd";
 import "./style.scss";
 
 function CompressionManager({ onCompressionManager }) {
   // Définir les états initiaux pour chaque format d'image
-  const [jpeg, setJpeg] = useState({ checked: false, quality: 0 });
-  const [webp, setWebp] = useState({ checked: false, quality: 0 });
-  const [png, setPng] = useState({ checked: false, quality: 0 });
+  const [jpeg, setJpeg] = useState({ checked: true, quality: 40 });
+  const [webp, setWebp] = useState({ checked: false, quality: 40 });
+  const [png, setPng] = useState({ checked: false, quality: 40 });
 
   // Créer une fonction de gestion générique pour manipuler les états
   const handleStateChange = (format, setFormat) => (e) => {
@@ -24,8 +25,9 @@ function CompressionManager({ onCompressionManager }) {
 
   return (
     <div className="compressionManager" data-testid="compression-manager">
+      <Tooltip title="Choisissez les formats de sortie et la qualité de compression">
       <h3>Options de compression</h3>
-      <p>Choisissez les formats de sortie et la qualité de compression</p>
+      </Tooltip>
 
       <div className="compressionManager-item">
 
@@ -34,6 +36,7 @@ function CompressionManager({ onCompressionManager }) {
             type="checkbox"
             id="jpeg"
             onChange={handleStateChange(jpeg, setJpeg)}
+            checked = {jpeg.checked} 
           />
           <label htmlFor="jpeg">Jpeg</label>
         </div>

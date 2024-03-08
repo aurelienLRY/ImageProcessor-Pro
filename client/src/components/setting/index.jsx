@@ -8,11 +8,11 @@ import Gears from "./gears";
 function Setting({ onSetting }) {
   const [settings, setSettings] = useState({});
   const [dimensions, setDimensions] = useState();
-  const [compression, setCompression] = useState();
+  const [compressed, setCompressed] = useState();
 
   useEffect(() => {
     onSetting(settings);
-  }, [dimensions, compression, settings]);
+  }, [dimensions, compressed, settings]);
 
   useEffect(() => {
     setSettings({
@@ -24,18 +24,18 @@ function Setting({ onSetting }) {
   useEffect(() => {
     setSettings({
       ...settings,
-      compression: compression,
+      compressed: compressed,
     });
-  }, [compression]);
+  }, [compressed]);
 
   return (
     <div className="setting" data-testid="setting">
       <div className="setting-header">
         <h2><Gears/> Setting</h2>
-        <p>Customize your experience</p>
+        <strong>Personnalisez les options de sortie </strong>
       </div>
       <div className="setting-content">
-        <CompressionManager onCompressionManager={(e)=> setCompression(e)} />
+        <CompressionManager onCompressionManager={(e)=> setCompressed(e)} />
         <DimensionManager onDimensionManager={(e) => setDimensions(e)} />
       </div>
     </div>

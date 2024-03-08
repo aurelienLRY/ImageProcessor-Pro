@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import {Tooltip} from "antd";
 import PropTypes from "prop-types";
 import FolderOpen from "./FolderOpen";
 import "./style.scss";
@@ -6,7 +7,7 @@ import "./style.scss";
 
 
 function DestinationManager({ onDestination }) {
-    const [destination, setDestination] = useState("");
+    const [destination, setDestination] = useState("./imageProcessor");
 
     function addSlashIfNeeded(destination) {
         if (!destination.endsWith("/")) {
@@ -22,8 +23,11 @@ function DestinationManager({ onDestination }) {
     return (
         <div className="destinationManager" data-testid="destination-manager">
             <div className="destinationManager-header">
+               
                 <h2><FolderOpen/>  Destination</h2>
-                <p>Renseigné le dossier de destination</p>
+                <Tooltip title='Renseignez le chemin relatif ou seront placées les images converties.  Par défaut : "./image_processor" '>
+                <strong>Renseignez le dossier de destination</strong> 
+                </Tooltip>
             </div>
             <div className="destinationManager-body">
                 <label htmlFor="destination">Dossier de destination</label>
@@ -31,7 +35,7 @@ function DestinationManager({ onDestination }) {
                     type="text"
                     id="destination"
                     name="destination"
-                    placeholder="Dossier de destination"
+                    placeholder="./images/homePage/"
                     onChange={(e) => setDestination(e.target.value)}
                 />
             </div>

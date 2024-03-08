@@ -28,7 +28,7 @@ describe("FilesRenamer", () => {
     const mockOnRename = vi.fn();
     const image = [new File([""], "image1.jpg"), new File([""], "image2.jpg")];
     render(<FilesRenamer image={image} onRename={mockOnRename} />);
-    const input = screen.getAllByPlaceholderText("Renseigner son nouveau nom");
+    const input = screen.getAllByTestId("file-input")
     fireEvent.change(input[0], { target: { value: "new_name" } });
     fireEvent.blur(input[0]); // Ajoutez cette ligne
     expect(mockOnRename).toHaveBeenCalledWith({ 0: "new_name" });

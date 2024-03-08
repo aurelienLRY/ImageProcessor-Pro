@@ -4,8 +4,7 @@ import './style.scss'
 function Footer() {
   return (
     <div className='footer' data-testid="footer">
-        Footer
-        
+     <a  href="https://leroyaurelien.com/" target="_blank" >Création Aurélien Leroy - 2024</a>     
     </div>
   )
 }

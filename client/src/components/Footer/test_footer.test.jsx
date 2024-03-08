@@ -8,9 +8,4 @@ describe('Footer Component', () => {
     expect(footerElement).toBeInTheDocument();
   });
 
-  it('should render the text "Footer"', () => {
-    render(<Footer />);
-    const textElement = screen.getByText('Footer');
-    expect(textElement).toBeInTheDocument();
-  });
 });

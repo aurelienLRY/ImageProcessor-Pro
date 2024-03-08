@@ -1,7 +1,9 @@
 @use "../../assets/sass/abstracts/variables" as v; // Import SASS variables file
 
 .dimensionManager {
+  min-width: 450px;
   width: 50%;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   gap: 0.3em;

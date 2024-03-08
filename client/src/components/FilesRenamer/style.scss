@@ -3,6 +3,8 @@
 .files-naming {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 1em;
   background-color: $background-light;
   border-radius: 5px;
@@ -21,12 +23,32 @@
     }
   }
 
+  &-table{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    min-width: 450px;
+    width: 100%;
+    max-width: 650px;
+
+    .table-header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5em 1.3em;
+      padding-right: 2em;
+      border-radius: 5px;
+      background-color: $background-medium;
+      color: white;
+    }
+  }
+
   &-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
     transition: all 0.1s ease-in-out;
-    padding: 0.5em;
+    padding: 0.2em 0.5em;
     border-radius: 5px;
 
     &:hover {
