@@ -37,7 +37,7 @@ function MyForm() {
           formData.append(key, value);
         }
       });
-      fetch("http://localhost:3000/", {
+      fetch(`${import.meta.env.VITE_APP_API_URL}/`, {
         method: "POST",
         body: formData,
       })

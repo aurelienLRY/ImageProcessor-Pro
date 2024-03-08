@@ -11,6 +11,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      VITE_APP_API_URL: ${{ secrets.VITE_APP_API_URL }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
