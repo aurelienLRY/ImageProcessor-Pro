@@ -1,0 +1,1 @@
+// Function qui contient la logique  pour archiver les données
