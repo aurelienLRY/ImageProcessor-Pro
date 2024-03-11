@@ -1,20 +1,30 @@
-const sharp = require("sharp");
+
 const fs = require("fs");
 const generateJsx = require("../generateJsx");
 const generateHtml = require("../generateHtml");
 
-function compressAndResizeImage(buffer, resize, format, quality, path) {
-  sharp(buffer)
-    .resize(resize)
-    .toFormat(format)
-    [format]({ quality: parseInt(quality) })
-    .toFile(path, (err, info) => {
-      if (err) throw err;
-      console.log(info);
+async function compressAndResizeImage(buffer, resize, format, quality, path) {
+  Jimp.read(buffer)
+    .then(image => {
+      if (resize) {
+        const resizeNumber = Number(resize);
+        if (isNaN(resizeNumber)) {
+          throw new Error('La valeur de resize doit être un nombre');
+        }
+        image.resize(resizeNumber, Jimp.AUTO); // redimensionne l'image seulement si resize est défini
+      }
+      image.quality(parseInt(quality)) // définit la qualité de l'image
+        .getBufferAsync(Jimp[`MIME_${format.toUpperCase()}`]) // convertit l'image au format spécifié
+        .then(buffer => {
+          fs.writeFileSync(path, buffer); // sauvegarde l'image
+        });
+    })
+    .catch(err => {
+      throw err;
     });
 }
 
-function generateImages(settings , files, singlePath) {
+async function generateImages(settings , files, singlePath) {
   const naming = JSON.parse(settings.naming);
   const compressed = JSON.parse(settings.settings).compressed;
   const dimensions = JSON.parse(settings.settings).dimensions;
@@ -25,7 +35,7 @@ function generateImages(settings , files, singlePath) {
     fs.rmSync(singlePath, { recursive: true });
   }
 
-  files.map((file, index) => {
+  files.map(async (file, index) => {
     const name = naming[index];
     const fileSavePath = `.${singlePath}/imageProcessor/${name}/`;
     fs.mkdirSync(fileSavePath, { recursive: true });
@@ -42,7 +52,7 @@ function generateImages(settings , files, singlePath) {
 
     // Enregistre l'image à sa taille originale pour chaque format
     if (compressed.jpeg.checked) {
-      compressAndResizeImage(
+      await compressAndResizeImage(
         buffer,
         null,
         "jpeg",
@@ -51,7 +61,7 @@ function generateImages(settings , files, singlePath) {
       );
     }
     if (compressed.webp.checked) {
-      compressAndResizeImage(
+     await compressAndResizeImage(
         buffer,
         null,
         "webp",
@@ -60,7 +70,7 @@ function generateImages(settings , files, singlePath) {
       );
     }
     if (compressed.png.checked) {
-      compressAndResizeImage(
+    await compressAndResizeImage(
         buffer,
         null,
         "png",
@@ -69,11 +79,11 @@ function generateImages(settings , files, singlePath) {
       );
     }
 
-    dimensions.map((dimension) => {
+    dimensions.map(async (dimension) => {
       const dimensionSuffix = dimension.dimensionSuffix;
       const resize = parseInt(dimension.dimension);
       if (compressed.jpeg.checked) {
-        compressAndResizeImage(
+       await compressAndResizeImage(
           buffer,
           resize,
           "jpeg",
@@ -82,7 +92,7 @@ function generateImages(settings , files, singlePath) {
         );
       }
       if (compressed.webp.checked) {
-        compressAndResizeImage(
+       await compressAndResizeImage(
           buffer,
           resize,
           "webp",
@@ -91,7 +101,7 @@ function generateImages(settings , files, singlePath) {
         );
       }
       if (compressed.png.checked) {
-        compressAndResizeImage(
+        await compressAndResizeImage(
           buffer,
           resize,
           "png",
